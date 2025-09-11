@@ -3,9 +3,9 @@ cmake_policy(SET CMP0048 NEW)
 project(rslidar_sdk)
 
 #=======================================
-# Custom Point Type (XYZI,XYZIRT, XYZIF, XYZIRTF)
+# Custom Point Type (XYZI,XYZIRT, XYZIF, XYZIRTF(autoware pointcloud format, actual output is XYZIRCAEDT))
 #=======================================
-set(POINT_TYPE XYZIRT)
+set(POINT_TYPE XYZIRTF)
 
 option(ENABLE_TRANSFORM "Enable transform functions" OFF)
 if(${ENABLE_TRANSFORM})
@@ -82,6 +82,8 @@ elseif(${POINT_TYPE} STREQUAL "XYZIF")
   add_definitions(-DPOINT_TYPE_XYZIF)
 elseif(${POINT_TYPE} STREQUAL "XYZIRTF")
   add_definitions(-DPOINT_TYPE_XYZIRTF)
+elseif(${POINT_TYPE} STREQUAL "XYZIRCAEDT")
+  add_definitions(-DPOINT_TYPE_XYZIRCAEDT)
 endif()
 
 message(=============================================================)

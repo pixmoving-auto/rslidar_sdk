@@ -42,6 +42,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     typedef PointCloudT<PointXYZIRT> LidarPointCloudMsg;
 #elif defined(POINT_TYPE_XYZIRTF)
     typedef PointCloudT<PointXYZIRTF> LidarPointCloudMsg;
+#elif defined(POINT_TYPE_XYZIRCAEDT)
+    typedef PointCloudT<POINT_TYPE_XYZIRCAEDT> LidarPointCloudMsg;
 #endif
 
 
