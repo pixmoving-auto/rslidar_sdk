@@ -174,7 +174,7 @@ inline sensor_msgs::PointCloud2 toRosMsg(const LidarPointCloudMsg& rs_msg, const
         *iter_azimuth_ = std::atan2(point.y, point.x);
         *iter_distance_ = std::hypot(point.x, point.y, point.z);
         *iter_elevation_ = std::asin(point.z / *iter_distance_);
-        *iter_time_stamp_ = uint32_t(point.time_stamp*10e9);
+        *iter_time_stamp_ = uint32_t(point.time_stamp*1e9);
 
         ++iter_intensity_;
         ++iter_return_type_;
@@ -225,7 +225,7 @@ inline sensor_msgs::PointCloud2 toRosMsg(const LidarPointCloudMsg& rs_msg, const
         *iter_azimuth_ = std::atan2(point.y, point.x);
         *iter_distance_ = std::hypot(point.x, point.y, point.z);
         *iter_elevation_ = std::asin(point.z / *iter_distance_);
-        *iter_time_stamp_ = uint32_t(point.time_stamp*10e9);
+        *iter_time_stamp_ = uint32_t(point.time_stamp*1e9);
 
         ++iter_intensity_;
         ++iter_return_type_;
@@ -468,7 +468,7 @@ inline sensor_msgs::msg::PointCloud2 toRosMsg(const LidarPointCloudMsg& rs_msg, 
         *iter_azimuth_ = std::atan2(point.y, point.x);
         *iter_distance_ = std::hypot(point.x, point.y, point.z);
         *iter_elevation_ = std::asin(point.z / *iter_distance_);
-        *iter_time_stamp_ = uint32_t(point.timestamp*10e9);
+        *iter_time_stamp_ = uint32_t(point.timestamp*1e9);
 
         ++iter_intensity_;
         ++iter_return_type_;
@@ -518,7 +518,7 @@ inline sensor_msgs::msg::PointCloud2 toRosMsg(const LidarPointCloudMsg& rs_msg, 
       *iter_azimuth_ = std::atan2(point.y, point.x);
       *iter_distance_ = std::hypot(point.x, point.y, point.z);
       *iter_elevation_ = std::asin(point.z / *iter_distance_);
-      *iter_time_stamp_ = uint32_t(point.timestamp*10e9);
+      *iter_time_stamp_ = uint32_t(point.timestamp*1e9);
 
       ++iter_intensity_;
       ++iter_return_type_;
