@@ -116,6 +116,9 @@ inline void SourceDriver::init(const YAML::Node& config)
   yamlRead<float>(driver_config, "end_angle", driver_param.decoder_param.end_angle, 360);
   yamlRead<bool>(driver_config, "dense_points", driver_param.decoder_param.dense_points, false);
   yamlRead<bool>(driver_config, "ts_first_point", driver_param.decoder_param.ts_first_point, false);
+  // EM4 checkerboard downsampling (configurable)
+  yamlRead<bool>(driver_config, "downsample_em4", driver_param.decoder_param.downsample_em4, false);
+  yamlRead<float>(driver_config, "downsample_em4_center_deg", driver_param.decoder_param.downsample_em4_center_deg, 6.0f);
 
   // mechanical decoder
   yamlRead<bool>(driver_config, "config_from_file", driver_param.decoder_param.config_from_file, false);

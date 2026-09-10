@@ -143,8 +143,9 @@ if(rclcpp_FOUND)
   find_package(ament_cmake REQUIRED)
   find_package(sensor_msgs REQUIRED)
   find_package(rslidar_msg REQUIRED)
-  find_package(std_msgs REQUIRED)                      
+  find_package(std_msgs REQUIRED)
   find_package(rclcpp_components REQUIRED)
+  find_package(cuda_blackboard REQUIRED)
 
 else(rclcpp_FOUND)
   message(=============================================================)
@@ -203,13 +204,21 @@ if(rclcpp_FOUND)
     rclcpp_components
     std_msgs
     sensor_msgs
-    rslidar_msg)
+    rslidar_msg
+    cuda_blackboard)
 
-  ament_target_dependencies(rslidar_sdk_node 
-    rclcpp 
-    std_msgs 
-    sensor_msgs 
-    rslidar_msg)
+  # CUDA runtime for the blackboard point cloud destination
+  find_package(CUDAToolkit REQUIRED)
+  target_link_libraries(rslidar_sdk_component CUDA::cudart)
+
+  ament_target_dependencies(rslidar_sdk_node
+    rclcpp
+    std_msgs
+    sensor_msgs
+    rslidar_msg
+    cuda_blackboard)
+
+  target_link_libraries(rslidar_sdk_node CUDA::cudart)
 
   install(TARGETS
     rslidar_sdk_node

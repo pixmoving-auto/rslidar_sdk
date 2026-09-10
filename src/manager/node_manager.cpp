@@ -34,6 +34,9 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "source/source_driver.hpp"
 #include "source/source_pointcloud_ros.hpp"
 #include "source/source_packet_ros.hpp"
+#ifdef ROS2_FOUND
+#include "source/source_pointcloud_cuda.hpp"
+#endif
 
 namespace robosense
 {
@@ -52,6 +55,9 @@ void NodeManager::init(const YAML::Node& config)
 
   bool send_point_cloud_ros;
   yamlRead<bool>(common_config, "send_point_cloud_ros", send_point_cloud_ros, false);
+
+  bool send_point_cloud_cuda;
+  yamlRead<bool>(common_config, "send_point_cloud_cuda", send_point_cloud_cuda, false);
 
   bool send_point_cloud_proto;
   yamlRead<bool>(common_config, "send_point_cloud_proto", send_point_cloud_proto, false);
@@ -131,6 +137,21 @@ void NodeManager::init(const YAML::Node& config)
       dst->init(lidar_config[i]);
       source->regPointCloudCallback(dst);
     }
+
+#ifdef ROS2_FOUND
+    if (send_point_cloud_cuda)
+    {
+      RS_DEBUG << "------------------------------------------------------" << RS_REND;
+      RS_DEBUG << "Send PointCloud To : CUDA Blackboard" << RS_REND;
+      RS_DEBUG << "CUDA PointCloud Topic: "
+               << lidar_config[i]["ros"]["cuda_send_point_cloud_topic"].as<std::string>() << RS_REND;
+      RS_DEBUG << "------------------------------------------------------" << RS_REND;
+
+      std::shared_ptr<DestinationPointCloud> dst = std::make_shared<DestinationPointCloudCuda>();
+      dst->init(lidar_config[i]);
+      source->regPointCloudCallback(dst);
+    }
+#endif
 
     sources_.emplace_back(source);
   }
