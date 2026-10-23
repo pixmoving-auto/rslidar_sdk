@@ -159,7 +159,9 @@ find_package(yaml-cpp REQUIRED)
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
 #Driver core#
-add_subdirectory(src/rs_driver)
+add_subdirectory(
+  "${CMAKE_CURRENT_SOURCE_DIR}/../rs_driver"
+  "${CMAKE_CURRENT_BINARY_DIR}/rs_driver")
 find_package(rs_driver REQUIRED)
 include_directories(${rs_driver_INCLUDE_DIRS})
 
