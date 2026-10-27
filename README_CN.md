@@ -46,20 +46,18 @@
 
 ### 1.2.1 使用 git clone
 
-rslidar_sdk项目包含子模块驱动内核rs_driver。在执行git clone后，还需要执行相关指令，初始化并更新子模块。
+rslidar_sdk依赖独立仓库rs_driver。请将两个仓库克隆到同一父目录下，构建时通过相对于rslidar_sdk的../rs_driver路径引用驱动内核。
 
   ```sh
-git clone https://github.com/RoboSense-LiDAR/rslidar_sdk.git
-cd rslidar_sdk
-git submodule init
-git submodule update
+git clone -b feature/autoware-xyzircaedt https://github.com/pixmoving-auto/rslidar_sdk.git
+git clone -b feature/autoware-xyzircaedt https://github.com/pixmoving-auto/rs_driver.git
   ```
 
 ### 1.2.2 直接下载
 
 用户可以直接访问  [rslidar_sdk_release](https://github.com/RoboSense-LiDAR/rslidar_sdk/releases) 下载最新版本的rslidar_sdk. 
 
-请下载 **rslidar_sdk.tar.gz** 压缩包，不要下载Source code。因为Source code压缩包内不包含子模块rs_driver的代码， 用户还需自行下载rs_driver的代码放入其中才行。
+使用本分支时，还需下载匹配的rs_driver仓库，并解压到名为rs_driver的同级目录。目录结构应为`<父目录>/rslidar_sdk`和`<父目录>/rs_driver`。
 ![](./img/01_01_download_page.png)
 
 

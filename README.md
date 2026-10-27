@@ -47,21 +47,19 @@ To integrate the Lidar driver into your own projects, please use the rs_driver.
 
 ### 2.1 Download via Git 
 
-Download the rslidar_sdk as below. Since it contains the submodule rs_driver, please also use `git submodule` to download the submodule properly.
+Clone rslidar_sdk and the independent rs_driver repository into the same parent directory. The build expects rs_driver at ../rs_driver relative to rslidar_sdk.
 
 
 ```sh
-git clone https://github.com/RoboSense-LiDAR/rslidar_sdk.git
-cd rslidar_sdk
-git submodule init
-git submodule update
+git clone -b feature/autoware-xyzircaedt https://github.com/pixmoving-auto/rslidar_sdk.git
+git clone -b feature/autoware-xyzircaedt https://github.com/pixmoving-auto/rs_driver.git
 ```
 
 ### 2.2 Download directly
 
 Instead of using Git, user can also access [rslidar_sdk_release](https://github.com/RoboSense-LiDAR/rslidar_sdk/releases) to download the latest version of rslidar_sdk. 
 
-Please download the **rslidar_sdk.tar.gz** archive instead of Source code. The Source code zip file does not contain the submodule rs_driver, so it has to be downloaded manaully.
+For this branch, also download the matching rs_driver repository and extract it into a sibling directory named rs_driver. The expected layout is `<parent>/rslidar_sdk` and `<parent>/rs_driver`.
 ![](./img/01_01_download_page.png)
 
 
