@@ -49,8 +49,8 @@
 rslidar_sdk依赖独立仓库rs_driver。请将两个仓库克隆到同一父目录下，构建时通过相对于rslidar_sdk的../rs_driver路径引用驱动内核。
 
   ```sh
-git clone -b feature/ubuntu24-thor-compat https://github.com/pixmoving-auto/rslidar_sdk.git
-git clone -b feature/ubuntu24-thor-compat https://github.com/pixmoving-auto/rs_driver.git
+git clone -b feature/autoware-xyzircaedt https://github.com/pixmoving-auto/rslidar_sdk.git
+git clone -b feature/autoware-xyzircaedt https://github.com/pixmoving-auto/rs_driver.git
   ```
 
 ### 1.2.2 直接下载

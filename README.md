@@ -51,8 +51,8 @@ Clone rslidar_sdk and the independent rs_driver repository into the same parent 
 
 
 ```sh
-git clone -b feature/ubuntu24-thor-compat https://github.com/pixmoving-auto/rslidar_sdk.git
-git clone -b feature/ubuntu24-thor-compat https://github.com/pixmoving-auto/rs_driver.git
+git clone -b feature/autoware-xyzircaedt https://github.com/pixmoving-auto/rslidar_sdk.git
+git clone -b feature/autoware-xyzircaedt https://github.com/pixmoving-auto/rs_driver.git
 ```
 
 ### 2.2 Download directly
